@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskList</title>
+    <link rel="stylesheet" href="tasklist/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+</head>
+<body>
+     <div class="todo-app">
+        <div class="initial-state">
+            <button class="toggle-add-btn">+</button>
+            <span class="placeholder-text">Type to add new task</span>
+        </div>
+        <div class="task-editor">
+            <div class="task-input-wrapper">
+                <span class="input-prefix" contenteditable="false">+</span>
+                <div id="task-input" contenteditable="true" class="editable" data-placeholder="Type your task here..."></div>
+            </div>
+           
+            <div class="options-container">
+               <div class="options-row">
+    <div class="option option-open" data-option="open">
+        <i data-feather="maximize-2"></i> 
+
+        <span class="option-text">Open</span>
+    </div>
+    <div class="option" data-option="today">
+        <i data-feather="calendar"></i>  
+
+        <span class="option-text">Today</span>
+    </div>
+    <div class="option" data-option="public">
+        <i data-feather="unlock"></i>  
+        
+        <span class="option-text">Public</span>
+    </div>
+    <div class="option" data-option="normal">
+        <i data-feather="sun"></i>  
+        
+        <span class="option-text">Normal</span>
+    </div>
+    <div class="option" data-option="estimation">
+        <i data-feather="circle"></i> 
+        
+        <span class="option-text">Estimation</span>
+    </div>
+</div>
+                <div class="action-buttons">
+                    <button id="cancel-btn"><span class="action-text">Cancel</span><i data-feather="x" class="action-icon"></i></button>
+                    <button id="add-btn" disabled><span class="action-text">Add</span><i data-feather="save" class="action-icon"></i></button>
+                </div>
+            </div>
+
+            <div class="avatar">
+                <img src="tasklist/user.jpeg" alt="Avatar">
+            </div>
+        </div>
+
+        <ul class="task-list">
+
+        </ul>
+    </div>
+
+    <div id="deleteModal" class="custom-modal">
+        <div class="modal-content">
+            <h3>¿Eliminar tarea?</h3>
+            <p>Esta acción no se puede deshacer. ¿Estás seguro de que quieres eliminar esta tarea?</p>
+            <div class="modal-actions">
+                <button class="modal-btn modal-cancel">Cancelar</button>
+                <button class="modal-btn modal-confirm">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    <script src="tasklist/app.js"></script>
+
+</body>
+</html>

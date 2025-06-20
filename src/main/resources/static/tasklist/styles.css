@@ -1,0 +1,425 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+.todo-app {
+    margin: auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.initial-state {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.initial-state button.toggle-add-btn {
+    font-size: 1.8em;
+    margin-right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: rgb(71, 178, 250);
+    border: solid 4px;
+    height: 40px;
+    width: 40px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.initial-state button.toggle-add-btn:hover {
+    transform: scale(1.1);
+}
+
+.placeholder-text {
+    font-size: 1em;
+    color: #888;
+}
+
+.task-editor {
+    position: relative;
+    margin-bottom: 20px;
+    display: none;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+.input-prefix {
+   font-size: 1.6em;
+    margin-right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: rgb(71, 178, 250);
+    border: solid 4px;
+    height: 30px;
+    width: 30px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+#task-input.editable {
+    flex: 1;
+    min-height: 30px;
+    outline: none;
+}
+
+[contenteditable]:empty:before {
+    content: attr(data-placeholder);
+    color: #888;
+}
+
+/* Contenedor de opciones */
+.options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.options-row {
+    display: flex;
+    gap: 8px;
+}
+
+.options-row .option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.5;
+    color: rgb(124, 124, 124);
+    transition: opacity 0.2s, background-color 0.2s;
+    pointer-events: none;
+}
+
+.options-row .option-open {
+    background-color: #f0f0f0;
+    color: rgb(65, 65, 65);
+    border:none;
+    border-radius: 0px;
+    margin-right: 24px;
+}
+
+.options-row .option.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.options-row .option:hover {
+    opacity: 1;
+}
+
+.options-row .option i {
+    margin-right: 4px;
+}
+
+.option-text {
+    font-size: 0.9em;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s, transform 0.2s;
+    min-width: 100px;
+    position: relative;
+}
+
+.action-buttons button .action-icon {
+    display: none;
+}
+
+.action-buttons button:hover {
+    transform: scale(1.02);
+}
+
+.action-buttons button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#cancel-btn {
+    background: #e9e9e9;
+    color: #333;
+}
+
+#add-btn {
+    background: #5b69df;
+    color: #fff;
+}
+
+.avatar {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+.avatar.active {
+    opacity: 1;
+}
+
+.avatar img {
+    width: 100%;
+    height: auto;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.task-item .task-checkbox {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+.task-item .task-text {
+    flex: 1;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 7px;
+    color: #fff;
+    font-size: 0.9em;
+    margin: 0 2px;
+    height: 24px;
+}
+
+.badge i {
+    margin-right: 4px;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badge-at {
+    background-color: rgb(198, 255, 198);
+    color: green;
+}
+
+.badge-hashtag {
+    background-color: rgb(255, 187, 255);
+    color: purple;
+}
+
+.badge-email,
+.badge-email-final {
+    background-color: rgb(255, 237, 203);
+    color: orange;
+}
+
+.badge-link,
+.badge-link-final {
+    background-color: rgb(182, 244, 255);
+    color: blue;
+}
+
+@media (max-width: 1230px) {
+    .option-text {
+        display: none;
+    }
+    
+    .action-buttons button {
+        min-width: 35px;
+        width: 35px;
+        padding: 6px;
+    }
+    
+    .action-buttons button .action-text {
+        display: none;
+    }
+    
+    .action-buttons button .action-icon {
+        display: block !important;
+    }
+    
+    .action-buttons button i {
+        margin: 0;
+    }
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+}
+
+.action-btn:hover {
+    color: #333;
+}
+
+.edit-btn:hover {
+    color: #1a73e8;
+}
+
+.delete-btn:hover {
+    color: #d32f2f;
+}
+
+.custom-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal-btn {
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.modal-cancel {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+.modal-confirm {
+    background-color: #d32f2f;
+    color: white;
+}
+
+.modal-cancel:hover {
+    background-color: #e0e0e0;
+}
+
+.modal-confirm:hover {
+    background-color: #b71c1c;
+}
+
+.error-alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #f44336;
+    color: white;
+    padding: 15px;
+    border-radius: 4px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
