@@ -29,7 +29,6 @@ class TaskApplicationE2ETest {
 
     @Test
     void whenCreateTask_thenGetTaskReturnsIt() {
-        // Create task
         given()
             .port(port)
             .contentType("application/json")
@@ -40,7 +39,6 @@ class TaskApplicationE2ETest {
             .statusCode(200)
             .body("description", equalTo("E2E Test Task"));
 
-        // Get all tasks
         given()
             .port(port)
         .when()
@@ -53,7 +51,6 @@ class TaskApplicationE2ETest {
 
     @Test
     void whenCreateAndUpdateTask_thenTaskIsUpdated() {
-        // Create task
         Long taskId = given()
             .port(port)
             .contentType("application/json")
@@ -63,7 +60,6 @@ class TaskApplicationE2ETest {
         .then()
             .extract().path("id");
 
-        // Update task
         given()
             .port(port)
             .contentType("application/json")
@@ -74,7 +70,6 @@ class TaskApplicationE2ETest {
             .statusCode(200)
             .body("description", equalTo("Updated Task"));
 
-        // Verify update
         given()
             .port(port)
         .when()
@@ -85,7 +80,6 @@ class TaskApplicationE2ETest {
 
     @Test
     void whenCreateAndDeleteTask_thenTaskIsRemoved() {
-        // Create task
         Long taskId = given()
             .port(port)
             .contentType("application/json")
@@ -95,7 +89,6 @@ class TaskApplicationE2ETest {
         .then()
             .extract().path("id");
 
-        // Delete task
         given()
             .port(port)
         .when()
@@ -103,7 +96,6 @@ class TaskApplicationE2ETest {
         .then()
             .statusCode(204);
 
-        // Verify deletion
         given()
             .port(port)
         .when()
@@ -114,7 +106,6 @@ class TaskApplicationE2ETest {
 
     @Test
     void whenToggleTask_thenCompletionStatusChanges() {
-        // Create task
         Long taskId = given()
             .port(port)
             .contentType("application/json")
@@ -124,7 +115,6 @@ class TaskApplicationE2ETest {
         .then()
             .extract().path("id");
 
-        // Toggle task
         given()
             .port(port)
         .when()
@@ -133,7 +123,6 @@ class TaskApplicationE2ETest {
             .statusCode(200)
             .body("completed", equalTo(true));
 
-        // Verify toggle
         given()
             .port(port)
         .when()

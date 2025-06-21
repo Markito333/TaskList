@@ -1,4 +1,4 @@
-# TaskList - Aplicación Full-Stack de Gestión de Tareas
+# 🚀 TaskList - Gestión Inteligente de Tareas
 
 TaskList es una solución integral para administrar tus tareas diarias. La aplicación fusiona un frontend interactivo y dinámico con un backend robusto, ofreciendo una experiencia de usuario moderna y escalable.
 
@@ -56,7 +56,7 @@ TaskList es una aplicación full-stack para la gestión de tareas que integra un
 ## Demo en Vivo
 
 - **Frontend (GitHub Pages):**  
-  [TaskList Frontend](https://markito333.github.io/TaskListFrontend)
+  [TaskList Frontend](https://markito333.github.io/TaskListFrontend/)
 
 - **Backend/Aplicación Completa (Heroku):**  
   [TaskList en Heroku](https://tu-aplicacion.herokuapp.com)  
