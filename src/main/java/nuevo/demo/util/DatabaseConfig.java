@@ -2,32 +2,30 @@ package nuevo.demo.util;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
 
 @Configuration
 public class DatabaseConfig {
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource);
-        em.setPackagesToScan("nuevo.demo.model");
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.postgresql.Driver");
         
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setGenerateDdl(true);
-        vendorAdapter.setShowSql(true);
+        // Usa JDBC_DATABASE_URL si existe, si no, construye la URL
+        String jdbcUrl = System.getenv("JDBC_DATABASE_URL");
+        if (jdbcUrl == null || jdbcUrl.isEmpty()) {
+            jdbcUrl = String.format("jdbc:postgresql://%s:%s/%s?sslmode=require&ssl=true",
+                System.getenv("PGHOST"),
+                System.getenv("PGPORT"),
+                System.getenv("PGDATABASE"));
+        }
         
-        em.setJpaVendorAdapter(vendorAdapter);
-        return em;
-    }
-
-    @Bean
-    public JpaTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean emf) {
-        JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(emf.getObject());
-        return transactionManager;
+        dataSource.setUrl(jdbcUrl);
+        dataSource.setUsername(System.getenv("PGUSER"));
+        dataSource.setPassword(System.getenv("PGPASSWORD"));
+        
+        return dataSource;
     }
 }
