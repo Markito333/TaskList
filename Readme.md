@@ -58,9 +58,9 @@ TaskList es una aplicación full-stack para la gestión de tareas que integra un
 - **Frontend (GitHub Pages):**  
   [TaskList Frontend](https://markito333.github.io/TaskListFrontend/)
 
-- **Backend/Aplicación Completa (Heroku):**  
-  [TaskList en Heroku](https://tu-aplicacion.herokuapp.com)  
-  *(Actualiza la URL según corresponda)*
+- **Backend/Aplicación Completa (Railway):**  
+  [TaskList en Heroku](https://tasklist.app.railway.com)  
+ 
 
 ## Estructura del proyecto
 
