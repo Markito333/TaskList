@@ -48,8 +48,7 @@ TaskList es una aplicación full-stack para la gestión de tareas que integra un
 ### Herramientas Adicionales
 - **Git & GitHub:** Control de versiones y colaboración en el desarrollo.
 - **GitHub Pages:** Despliegue del frontend.
-- **Heroku:** Plataforma para desplegar el backend y la aplicación completa en producción.
-- **Heroku CLI:** Para gestionar el despliegue y las configuraciones en la nube.
+- **Railway:** Plataforma para desplegar el backend y la aplicación completa en producción.
 
 ---
 
