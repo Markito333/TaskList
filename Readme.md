@@ -61,27 +61,26 @@ TaskList es una aplicación full-stack para la gestión de tareas que integra un
 - **Backend/Aplicación Completa (Railway):**  
   [TaskList en Heroku](https://tasklist.app.railway.com)  
  
+-----
 
-## Estructura del proyecto
+Estructura del Proyecto
+La aplicación TaskList está construida sobre Spring Boot y combina el frontend y el backend en un único paquete ejecutable. A continuación, se muestra cómo se organiza el proyecto:
 
-🗂
-La aplicación está organizada bajo una arquitectura típica de Spring Boot, integrando tanto el frontend como el backend en un solo paquete ejecutable:
+📄 pom.xml: Archivo de configuración de Maven que define todas las dependencias, plugins y ajustes necesarios para compilar y empaquetar la aplicación.
 
-TaskList/
-├── pom.xml                        # Archivo de configuración de Maven
-├── Procfile                      # Instrucciones para Heroku (despliegue)
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── demo/             # Paquete base con controladores, servicios y entidades
-│   │   │       └── Application.java  # Clase principal con @SpringBootApplication
-│   │   └── resources/
-│   │       ├── static/          # Frontend: HTML, CSS, JS
-│   │       └── application.properties # Configuración de la app (incluye datasource)
-│   └── test/
-│       └── java/                # Pruebas unitarias y de integración
-├── target/                       # Archivos generados por Maven (.jar incluido)
-└── .vscode/                      # Configuraciones del editor (opcional)
+📁 src/main/java:
+
+📦 demo: Paquete base que contiene el código del backend:
+
+🚀 RunPW.java: Clase principal anotada con @SpringBootApplication que arranca la aplicación.
+
+📁 src/main/resources:
+
+🖥 static: Carpeta con los archivos del frontend (HTML, CSS, y JavaScript).
+
+⚙️ application.properties: Archivo de configuración donde se definen parámetros importantes como la conexión a la base de datos.
+
+📁 src/test/java: Ubicación de todas las pruebas unitarias y de integración para asegurar la calidad del código.
 
 
 
