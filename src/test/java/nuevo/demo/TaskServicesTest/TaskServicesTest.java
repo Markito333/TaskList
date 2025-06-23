@@ -102,7 +102,6 @@ class TaskServiceTest {
         
         assertTrue(result.isCompleted());
         
-        // Second toggle
         Task secondResult = taskService.toggleTaskCompletion(1L);
         assertFalse(secondResult.isCompleted());
     }
